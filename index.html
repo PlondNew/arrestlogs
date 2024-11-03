@@ -3,18 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vesperia Police Department Arrest-Database</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vesperia Police Department Arrest Database</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #4a90e2;
+            font-size: 24px;
+        }
+        #password-input {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #submit-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #d9534f; /* Default color for error */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Vesperia Police Department Arrest-Database</h1>
-        <h2>[Enter Password]</h2>
-        <input type="password" id="password" placeholder="Enter password">
-        <p>*This is an IC Database, meaning all information on this can be taken In-Character*</p>
-        <button onclick="checkPassword()">Submit</button>
-    </div>
+    <h1>Vesperia Police Department Arrest-Database</h1>
+    <h2>[Enter Password]</h2>
+    <input type="password" id="password-input" placeholder="Enter Password" />
+    <button id="submit-button">Submit</button>
+    <p id="message"></p>
+    <p style="font-size: 12px; color: #888888;">*This is an IC Database, meaning all information on this can be taken In-Character*</p>
 
-    <script src="script.js"></script>
+    <script>
+        // The correct password
+        const correctPassword = "808"; // Change to your desired password
+
+        // Get references to HTML elements
+        const passwordInput = document.getElementById("password-input");
+        const submitButton = document.getElementById("submit-button");
+        const message = document.getElementById("message");
+
+        // Add click event listener to the submit button
+        submitButton.addEventListener("click", function() {
+            const enteredPassword = passwordInput.value;
+
+            // Check if the entered password is correct
+            if (enteredPassword === correctPassword) {
+                message.style.color = "green";
+                message.textContent = "Access Granted!";
+                // Redirect to another page, e.g., 'database.html'
+                window.location.href = "database.html";
+            } else {
+                message.style.color = "#d9534f"; // Red for error
+                message.textContent = "Incorrect password. Please try again.";
+            }
+        });
+    </script>
 </body>
 </html>
